@@ -17,5 +17,7 @@
 
 Directory Lister is distributed under the terms of the
 [MIT License](http://www.opensource.org/licenses/mit-license.php).
+
 Copyright 2015 [Chris Kankiewicz](http://www.chriskankiewicz.com)
-Copyright 2017 [n0nad3v](https://github.com/n0vad3v)
+
+Copyright 2017 [n0vad3v](https://github.com/n0vad3v)
