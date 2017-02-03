@@ -8,17 +8,21 @@
         <link rel="shortcut icon" href="<?php echo THEMEPATH; ?>/img/folder.png">
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css">
+        <!-- <link href="<?php echo THEMEPATH; ?>/css/creative.min.css" rel="stylesheet"> -->
 
         <!-- SCRIPTS -->
         <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/directorylister.js"></script>
 
         <!-- FONTS -->
-        <link rel="stylesheet" type="text/css"  href="//fonts.googleapis.com/css?family=Cutive+Mono">
+        <!-- <link rel="stylesheet" type="text/css"  href="//fonts.googleapis.com/css?family=Cutive+Mono"> -->
+
+        <!-- Plugin CSS -->
+        <link href="<?php echo THEMEPATH; ?>/magnific-popup/magnific-popup.css" rel="stylesheet">
 
         <!-- META -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,71 +30,40 @@
 
         <?php file_exists('analytics.inc') ? include('analytics.inc') : false; ?>
 
-        <style>
-            /* CUSTOMIZE THE NAVBAR
-            -------------------------------------------------- */
-
-            /* Special class on .container surrounding .navbar, used for positioning it into place. */
-            .navbar-wrapper {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 10;
-                margin-top: 20px;
-                margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-            }
-            .navbar-wrapper .navbar {
-
-            }
-
-            /* Remove border and change up box shadow for more contrast */
-            .navbar .navbar-inner {
-                border: 0;
-                -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-                -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-                box-shadow: 0 2px 10px rgba(0,0,0,.25);
-            }
-
-            /* Downsize the brand/project name a bit */
-            .navbar .brand {
-                padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-                font-size: 16px;
-                font-weight: bold;
-                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-            }
-
-            /* Navbar links: increase padding for taller navbar */
-            .navbar .nav > li > a {
-                padding: 15px 20px;
-            }
-
-            /* Offset the responsive button for proper vertical alignment */
-            .navbar .btn-navbar {
-        </style>
-
     </head>
 
     <body>
 
-    <div class="navbar-wrapper">
-        <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-        <div class="container">
+
+    <div id="page-content" class="container">
+
+
+            <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
+
+            <?php if($lister->getSystemMessages()): ?>
+                <?php foreach ($lister->getSystemMessages() as $message): ?>
+                    <div class="alert alert-<?php echo $message['type']; ?>">
+                        <?php echo $message['text']; ?>
+                        <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
         <div id="page-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="container">
 
                 <?php $breadcrumbs = $lister->listBreadcrumbs(); ?>
 
-                <p class="navbar-text">
+                <ul class="navbar-text">
                     <?php foreach($breadcrumbs as $breadcrumb): ?>
                         <?php if ($breadcrumb != end($breadcrumbs)): ?>
-                                <a href="<?php echo $breadcrumb['link']; ?>"><?php echo $breadcrumb['text']; ?></a>
-                                <span class="divider">/</span>
+                            <a href="<?php echo $breadcrumb['link']; ?>"><?php echo $breadcrumb['text']; ?></a>
+                            <span class="divider">/</span>
                         <?php else: ?>
                             <?php echo $breadcrumb['text']; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                </p>
+                </ul>
 
                 <div class="navbar-right">
 
@@ -116,22 +89,8 @@
 
             </div>
         </div>
-        </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
 
 
-    <div id="page-content" class="container">
-
-            <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
-
-            <?php if($lister->getSystemMessages()): ?>
-                <?php foreach ($lister->getSystemMessages() as $message): ?>
-                    <div class="alert alert-<?php echo $message['type']; ?>">
-                        <?php echo $message['text']; ?>
-                        <a class="close" data-dismiss="alert" href="#">&times;</a>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
 
             <div id="directory-list-header">
                 <div class="row">
@@ -140,6 +99,9 @@
                     <div class="col-md-3 col-sm-4 hidden-xs text-right">Last Modified</div>
                 </div>
             </div>
+
+
+
 
             <ul id="directory-listing" class="nav nav-pills nav-stacked">
 
@@ -223,6 +185,18 @@
                 </div>
             </div>
         </div>
+
+    <aside id="aside" class="sidebar col-sm-3 col-md-2 hidden-print small">
+        <div class="sidebar-content">
+            <div class="sidebar-body collapse in">
+
+                <p>
+                    <img src="<?php echo THEMEPATH; ?>/img/lm_logo.png" style="position: fixed; bottom: -180px; left: -230px; opacity: 0.1; z-index: -100" alt="">
+                </p>
+            </div>
+        </div>
+    </aside>
+
 
     </body>
 
