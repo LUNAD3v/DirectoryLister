@@ -40,7 +40,7 @@
         }
 
         // Set path to theme index
-        $themeIndex = $lister->getThemePath(true) . '/index.php';
+        $themeIndex = $lister->getThemePath(true) . '/app.php';
 
         // Initialize the theme
         if (file_exists($themeIndex)) {

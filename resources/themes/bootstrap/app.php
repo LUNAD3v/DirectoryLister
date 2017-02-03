@@ -34,8 +34,17 @@
 
     <body>
 
+    <div class="row">
+        <div class="col-md-2" id="leftCol">
 
-    <div id="page-content" class="container">
+            <ul class="nav nav-stacked" id="sidebar">
+                <li><a href="https://lunaluna.org">LUNA首页</a></li>
+                <li><a href="#">帮助</a></li>
+                <li><a href="mailto:lunaluna@sigaint.org">联系我们</a></li>
+            </ul>
+
+        </div>
+    <div id="page-content" class="container col-md-10">
 
 
             <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
@@ -103,6 +112,7 @@
 
 
 
+
             <ul id="directory-listing" class="nav nav-pills nav-stacked">
 
                 <?php foreach($dirArray as $name => $fileInfo): ?>
@@ -151,40 +161,44 @@
             </ul>
         </div>
 
-        <?php file_exists('footer.php') ? include('footer.php') : include($lister->getThemePath(true) . "/default_footer.php"); ?>
 
-        <div id="file-info-modal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">{{modal_header}}</h4>
-                    </div>
 
-                    <div class="modal-body">
+    </div>
+    <?php file_exists('footer.php') ? include('footer.php') : include($lister->getThemePath(true) . "/default_footer.php"); ?>
 
-                        <table id="file-info" class="table table-bordered">
-                            <tbody>
+    <div id="file-info-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-                                <tr>
-                                    <td class="table-title">MD5</td>
-                                    <td class="md5-hash">{{md5_sum}}</td>
-                                </tr>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{modal_header}}</h4>
+                </div>
 
-                                <tr>
-                                    <td class="table-title">SHA1</td>
-                                    <td class="sha1-hash">{{sha1_sum}}</td>
-                                </tr>
+                <div class="modal-body">
 
-                            </tbody>
-                        </table>
+                    <table id="file-info" class="table table-bordered">
+                        <tbody>
 
-                    </div>
+                        <tr>
+                            <td class="table-title">MD5</td>
+                            <td class="md5-hash">{{md5_sum}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="table-title">SHA1</td>
+                            <td class="sha1-hash">{{sha1_sum}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
 
                 </div>
+
             </div>
         </div>
+    </div>
 
     <aside id="aside" class="sidebar col-sm-3 col-md-2 hidden-print small">
         <div class="sidebar-content">
@@ -199,5 +213,12 @@
 
 
     </body>
+    <script>
+        $('#sidebar').affix({
+            offset: {
+                top: 245
+            }
+        });
+    </script>
 
 </html>
