@@ -8,15 +8,17 @@
         <link rel="shortcut icon" href="<?php echo THEMEPATH; ?>/img/folder.png">
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="<?php echo THEMEPATH; ?>/css/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo THEMEPATH; ?>/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css">
 
         <!-- SCRIPTS -->
-        <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/jquery.min.js"></script>
-        <script src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/directorylister.js"></script>
 
+        <!-- FONTS -->
+        <link rel="stylesheet" type="text/css"  href="//fonts.googleapis.com/css?family=Cutive+Mono">
 
         <!-- META -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +26,56 @@
 
         <?php file_exists('analytics.inc') ? include('analytics.inc') : false; ?>
 
+        <style>
+            /* CUSTOMIZE THE NAVBAR
+            -------------------------------------------------- */
+
+            /* Special class on .container surrounding .navbar, used for positioning it into place. */
+            .navbar-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                margin-top: 20px;
+                margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+            }
+            .navbar-wrapper .navbar {
+
+            }
+
+            /* Remove border and change up box shadow for more contrast */
+            .navbar .navbar-inner {
+                border: 0;
+                -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+                box-shadow: 0 2px 10px rgba(0,0,0,.25);
+            }
+
+            /* Downsize the brand/project name a bit */
+            .navbar .brand {
+                padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+                font-size: 16px;
+                font-weight: bold;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+            }
+
+            /* Navbar links: increase padding for taller navbar */
+            .navbar .nav > li > a {
+                padding: 15px 20px;
+            }
+
+            /* Offset the responsive button for proper vertical alignment */
+            .navbar .btn-navbar {
+        </style>
+
     </head>
 
     <body>
 
+    <div class="navbar-wrapper">
+        <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+        <div class="container">
         <div id="page-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="container">
 
@@ -68,8 +116,11 @@
 
             </div>
         </div>
+        </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
 
-        <div id="page-content" class="container">
+
+    <div id="page-content" class="container">
 
             <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
 

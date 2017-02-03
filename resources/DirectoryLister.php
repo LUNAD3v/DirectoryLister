@@ -33,6 +33,13 @@ class DirectoryLister {
      */
     public function __construct() {
 
+        //Set default timezone
+        if( ! ini_get('date.timezone') )
+        {
+            date_default_timezone_set('Asia/Chongqing');
+
+        }
+
         // Set class directory constant
         if(!defined('__DIR__')) {
             define('__DIR__', dirname(__FILE__));
