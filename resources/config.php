@@ -15,6 +15,12 @@ return array(
         '*/.ht*',
         'resources',
         'resources/*',
+		'css',
+        'css/*',
+        'fonts',
+        'fonts/*',
+        'js',
+        'js/*',
         'analytics.inc',
         'header.php',
         'footer.php'

@@ -4,18 +4,18 @@
 
     <head>
 
-        <title>Directory listing of <?php echo $lister->getListedPath(); ?></title>
+        <title>LUNA镜像站<?php echo $lister->getListedPath(); ?></title>
         <link rel="shortcut icon" href="<?php echo THEMEPATH; ?>/img/folder.png">
 
         <!-- STYLES -->
-        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css">
         <!-- <link href="<?php echo THEMEPATH; ?>/css/creative.min.css" rel="stylesheet"> -->
 
         <!-- SCRIPTS -->
-        <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/directorylister.js"></script>
 
         <!-- FONTS -->
@@ -28,23 +28,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
 
-        <?php file_exists('analytics.inc') ? include('analytics.inc') : false; ?>
 
     </head>
 
     <body>
 
     <div class="row">
-        <div class="col-md-2" id="leftCol">
+        <div class="col-md-2 col-sm-12 col-xs-12" id="leftCol">
 
             <ul class="nav nav-stacked" id="sidebar">
                 <li><a href="https://lunaluna.org">LUNA首页</a></li>
                 <li><a href="#">帮助</a></li>
-                <li><a href="mailto:lunaluna@sigaint.org">联系我们</a></li>
+                <li><a href="mailto:lunaluna@riseup.net">联系我们</a></li>
             </ul>
 
         </div>
-    <div id="page-content" class="container col-md-10">
+    <div id="page-content" class="container col-md-10 col-sm-12 col-xs-12">
 
 
             <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
@@ -103,9 +102,9 @@
 
             <div id="directory-list-header">
                 <div class="row">
-                    <div class="col-md-7 col-sm-6 col-xs-10">File</div>
-                    <div class="col-md-2 col-sm-2 col-xs-2 text-right">Size</div>
-                    <div class="col-md-3 col-sm-4 hidden-xs text-right">Last Modified</div>
+                    <div class="col-md-7 col-sm-6 col-xs-10">文件名</div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 text-right">文件大小</div>
+                    <div class="col-md-3 col-sm-4 hidden-xs text-right">修改时间</div>
                 </div>
             </div>
 
