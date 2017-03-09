@@ -4,7 +4,7 @@
 
     <head>
 
-        <title>LUNA镜像站<?php echo $lister->getListedPath(); ?></title>
+        <title>LUNA协会镜像站</title>
         <link rel="shortcut icon" href="<?php echo THEMEPATH; ?>/img/folder.png">
 
         <!-- STYLES -->
@@ -107,8 +107,6 @@
                     <div class="col-md-3 col-sm-4 hidden-xs text-right">修改时间</div>
                 </div>
             </div>
-
-
 
 
 
