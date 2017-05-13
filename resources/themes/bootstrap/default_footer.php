@@ -1,5 +1,5 @@
 <hr>
 
 <div class="footer">
-    Powered by <a href="https://lunaluna.org">Lizihu Utopia LUNA Association</a>
+    Powered by <img src="resources/themes/bootstrap/img/footer.png" height="50">
 </div>
