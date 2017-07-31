@@ -9,6 +9,7 @@
 
         <!-- STYLES -->
         <link rel="stylesheet" href="<?php echo THEMEPATH; ?>/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo THEMEPATH; ?>/css/mdb.min.css">
         <link rel="stylesheet" href="<?php echo THEMEPATH; ?>/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css">
         <!-- <link href="<?php echo THEMEPATH; ?>/css/creative.min.css" rel="stylesheet"> -->
@@ -34,17 +35,15 @@
     <body>
 
     <div class="row">
-        <div class="col-md-2 col-sm-12 col-xs-12" id="leftCol">
+        <div class="col-md-2 col-sm-12 col-xs-12">
 
             <ul class="nav nav-stacked" id="sidebar">
                 <li><a href="https://lunaluna.org">LUNA首页</a></li>
-                <li><a href="#">帮助</a></li>
                 <li><a href="mailto:lunaluna@riseup.net">联系我们</a></li>
             </ul>
 
         </div>
     <div id="page-content" class="container col-md-10 col-sm-12 col-xs-12">
-
 
             <?php file_exists('header.php') ? include('header.php') : include($lister->getThemePath(true) . "/default_header.php"); ?>
 
@@ -72,28 +71,6 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
-
-                <div class="navbar-right">
-
-                    <ul id="page-top-nav" class="nav navbar-nav">
-                        <li>
-                            <a href="javascript:void(0)" id="page-top-link">
-                                <i class="fa fa-arrow-circle-up fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <?php  if ($lister->isZipEnabled()): ?>
-                        <ul id="page-top-download-all" class="nav navbar-nav">
-                            <li>
-                                <a href="?zip=<?php echo $lister->getDirectoryPath(); ?>" id="download-all-link">
-                                    <i class="fa fa-download fa-lg"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    <?php endif; ?>
-
-                </div>
 
             </div>
         </div>
@@ -134,23 +111,6 @@
 
                         </a>
 
-                        <?php if (is_file($fileInfo['file_path'])): ?>
-
-                            <a href="javascript:void(0)" class="file-info-button">
-                                <i class="fa fa-info-circle"></i>
-                            </a>
-
-                        <?php else: ?>
-
-                            <?php if ($lister->containsIndex($fileInfo['file_path'])): ?>
-
-                                <a href="<?php echo $fileInfo['file_path']; ?>" class="web-link-button" <?php if($lister->externalLinksNewWindow()): ?>target="_blank"<?php endif; ?>>
-                                    <i class="fa fa-external-link"></i>
-                                </a>
-
-                            <?php endif; ?>
-
-                        <?php endif; ?>
 
                     </li>
                 <?php endforeach; ?>
@@ -164,45 +124,11 @@
     </div>
     <?php file_exists('footer.php') ? include('footer.php') : include($lister->getThemePath(true) . "/default_footer.php"); ?>
 
-    <div id="file-info-modal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{modal_header}}</h4>
-                </div>
-
-                <div class="modal-body">
-
-                    <table id="file-info" class="table table-bordered">
-                        <tbody>
-
-                        <tr>
-                            <td class="table-title">MD5</td>
-                            <td class="md5-hash">{{md5_sum}}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="table-title">SHA1</td>
-                            <td class="sha1-hash">{{sha1_sum}}</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <aside id="aside" class="sidebar col-sm-3 col-md-2 hidden-print small">
         <div class="sidebar-content">
             <div class="sidebar-body collapse in">
-
                 <p>
-                    <img src="<?php echo THEMEPATH; ?>/img/lm_logo.png" style="position: fixed; bottom: -180px; left: -230px; opacity: 0.1; z-index: -100" alt="">
+                    <img src="<?php echo THEMEPATH; ?>/img/lm_logo.png" style="position: fixed; bottom: -1px; left: -2px; opacity: 0.4; z-index: -100" alt="">
                 </p>
             </div>
         </div>
@@ -210,12 +136,6 @@
 
 
     </body>
-    <script>
-        $('#sidebar').affix({
-            offset: {
-                top: 245
-            }
-        });
-    </script>
+
 
 </html>
